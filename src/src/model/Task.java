@@ -7,11 +7,10 @@ public class Task {
         private String nome;
         private String descricao;
         private LocalDate dataTermino;
-        private int nivelPrioridade; // de 1 a 5
+        private int nivelPrioridade; 
         private String categoria;
-        private Status status; // esse Status pode ser um enum que vamos criar
+        private Status status; 
 
-        // Construtor
         public Task(String nome, String descricao, LocalDate dataTermino,
                     int nivelPrioridade, String categoria, Status status) {
             this.nome = nome;
