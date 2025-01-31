@@ -35,7 +35,7 @@ public class Main {
                     String nome = sc.nextLine();
                     System.out.print("Descrição: ");
                     String descricao = sc.nextLine();
-                    System.out.print("Data de término (yyyy-mm-dd): ");
+                    System.out.print("Data de término (yyyy-MM-dd): ");
                     String data = sc.nextLine();
                     System.out.print("Nível de prioridade (1-5): ");
                     int prioridade = sc.nextInt();
@@ -78,7 +78,7 @@ public class Main {
                     break;
 
                 case 7:
-                    System.out.print("Informe o índice e a opção (1-6) para atualizar: ");
+                    System.out.print("Informe o índice e a opção (1-nome 2- descrição 3- data de termino 4 - nivel de prioridade 5- categoria 6- status) para atualizar: ");
                     service.atualizarTarefa(sc.nextInt(), sc.nextInt(), sc.next());
                     sc.nextLine();
                     break;

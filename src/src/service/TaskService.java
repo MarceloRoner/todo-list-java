@@ -87,7 +87,6 @@ public class TaskService {
             System.out.println("Índice inválido!");
             return;
         }
-
         switch (opcao) {
             case 1: tarefa.setNome(novoValor); break;
             case 2: tarefa.setDescricao(novoValor); break;
