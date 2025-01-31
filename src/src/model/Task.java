@@ -69,6 +69,15 @@ public class Task {
             this.status = status;
         }
 
+    @Override
+    public String toString() {
+        return "Tarefa: " + nome + " | " +
+                "Descrição: " + descricao + " | " +
+                "Data de término: " + dataTermino + " | " +
+                "Prioridade: " + nivelPrioridade+ " | " +
+                "Categoria: " + categoria + " | " +
+                "Status: " + status;
+    }
 
 
 }
