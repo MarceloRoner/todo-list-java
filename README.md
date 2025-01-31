@@ -9,7 +9,7 @@ operações de CRUD (Create, Read, Update, Delete) com persistência em arquivo 
 - **Listar Tarefas**: todas, por categoria, por prioridade, por status
 - **Atualizar Tarefa**: alterar campos de uma tarefa existente
 - **Deletar Tarefa**: remover da lista
-- **Persistência**: salva e carrega tarefas de um arquivo CSV (tarefas.csv)
+- **Persistência**: salva e carrega tarefas de um arquivo TXT (tarefas.txt)
 
 ## Como executar
 
