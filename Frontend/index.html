@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List - Frontend</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TODO List</h1>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <h2>Criar / Editar Tarefa</h2>
+      <form id="task-form" class="task-form">
+        <div class="form-group">
+          <label for="taskName">Nome</label>
+          <input type="text" id="taskName" required>
+        </div>
+        <div class="form-group">
+          <label for="taskDesc">Descrição</label>
+          <input type="text" id="taskDesc" required>
+        </div>
+        <div class="form-group">
+          <label for="taskDate">Data</label>
+          <input type="date" id="taskDate" required>
+        </div>
+        <div class="form-group">
+          <label for="taskPriority">Nível de Prioridade (1-5)</label>
+          <input type="number" id="taskPriority" min="1" max="5" required>
+        </div>
+        <div class="form-group">
+          <label for="taskCategory">Categoria</label>
+          <input type="text" id="taskCategory">
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Status</label>
+          <select id="taskStatus" required>
+            <option value="TODO">TODO</option>
+            <option value="DOING">DOING</option>
+            <option value="DONE">DONE</option>
+          </select>
+        </div>
+        <button type="submit" id="saveTaskBtn" class="btn btn-primary">Salvar Tarefa</button>
+        <input type="hidden" id="editingTaskIndex" value="">
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Lista de Tarefas</h2>
+      <div class="filter-container">
+        <label for="filterStatus" class="filter-label">Filtrar por Status</label>
+        <select id="filterStatus" class="filter-select">
+          <option value="">Todos</option>
+          <option value="TODO">TODO</option>
+          <option value="DOING">DOING</option>
+          <option value="DONE">DONE</option>
+        </select>
+        <button id="filterBtn" class="btn btn-secondary">Filtrar</button>
+      </div>
+      <table id="task-table" class="task-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Prioridade</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desenvolvido por Marcelo</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
