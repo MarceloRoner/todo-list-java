@@ -1,31 +1,43 @@
-# TODO List em Java
+✅ TODO List em Java + Frontend
+Este repositório contém um projeto de TODO List desenvolvido em Java para o backend e HTML, CSS, e JavaScript para o frontend. O sistema implementa operações de CRUD (Create, Read, Update, Delete) com persistência em arquivo TXT.
 
-Este repositório contém um projeto de **TODO List** desenvolvido em Java, que implementa 
-operações de CRUD (Create, Read, Update, Delete) com persistência em arquivo CSV.
+📌 Funcionalidades
+Backend (Java)
+✅ Adicionar Tarefa: Nome, descrição, data de término, prioridade (1-5), categoria, status (TODO, DOING, DONE).
+✅ Listar Tarefas: Exibir todas, filtrar por categoria, prioridade ou status.
+✅ Atualizar Tarefa: Alterar qualquer campo de uma tarefa existente.
+✅ Deletar Tarefa: Remover uma tarefa da lista.
+✅ Persistência: Salva e carrega tarefas de um arquivo TXT (tarefas.txt).
 
-## Funcionalidades
+Frontend (HTML, CSS, JS)
+✅ Interface amigável para manipulação de tarefas.
+✅ Formulário para adicionar novas tarefas.
+✅ Tabela dinâmica para listar as tarefas cadastradas.
+✅ Botões para editar e excluir tarefas diretamente na interface.
+✅ Simulação do backend via JavaScript (enquanto a API não está integrada).
 
-- **Adicionar Tarefa**: nome, descrição, data de término, prioridade (1-5), categoria, status (TODO, DOING, DONE)
-- **Listar Tarefas**: todas, por categoria, por prioridade, por status
-- **Atualizar Tarefa**: alterar campos de uma tarefa existente
-- **Deletar Tarefa**: remover da lista
-- **Persistência**: salva e carrega tarefas de um arquivo TXT (tarefas.txt)
-
-## Como executar
-
-1. **Clonar** este repositório:
-   git clone https://github.com/SEU_USUARIO/todo-list-java.git
-Abrir no IntelliJ (ou outra IDE) ou compilar via terminal (pasta raiz do projeto):
+🚀 Como Executar
+1️⃣ Rodando o Backend (Java)
+Clone o repositório:
+git clone https://github.com/SEU_USUARIO/todo-list-java.git
+Abra no IntelliJ IDEA (ou Eclipse) OU compile via terminal:
 cd todo-list-java
 javac src/**/*.java
 java -cp src Main
-Observação: o comando exato depende de como você estruturou o package.
-Caso use IntelliJ, é só abrir o projeto e rodar Main.
+🔹 OBS: O comando pode variar dependendo da estrutura de pacotes.
+🔹 Se estiver usando uma IDE, basta rodar a classe Main.java.
 
-Tecnologias e Ferramentas
-Java 
-IntelliJ IDEA (ou Eclipse, etc.)
-Git e GitHub para versionamento
-Sem uso de frameworks (Spring, etc.), somente Java puro
-Autor
+2️⃣ Rodando o Frontend (HTML, CSS, JavaScript)
+Acesse a pasta do frontend:
+
+cd Frontend
+Abra o arquivo index.html no navegador.
+🛠️ Tecnologias e Ferramentas
+🔹 Java (Backend)
+🔹 HTML, CSS, JavaScript (Frontend)
+🔹 IntelliJ IDEA (ou Eclipse, etc.)
+🔹 Git & GitHub para versionamento
+🔹 Sem frameworks (Java puro no backend, sem Spring, etc.)
+
+📌 Autor
 Marcelo Roner
