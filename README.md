@@ -11,6 +11,7 @@ Este repositório contém um projeto de **TODO List** desenvolvido em **Java** p
 - ✅ **Listar Tarefas:** Exibir todas, filtrar por **categoria, prioridade ou status**.
 - ✅ **Atualizar Tarefa:** Alterar qualquer campo de uma tarefa existente.
 - ✅ **Deletar Tarefa:** Remover uma tarefa da lista.
+- ✅ **Verificar Alarmes:** Opção para verificar manualmente quais tarefas estão próximas do vencimento.
 - ✅ **Persistência:** Salva e carrega tarefas de um arquivo **TXT (`tarefas.txt`)**.
 
 ### **📌 Frontend (HTML, CSS, JS)**
