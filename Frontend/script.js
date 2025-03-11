@@ -107,6 +107,6 @@ function deleteTask(index) {
 }
 
 function formReset() {
-  document.getElementById("task-form").reset();
+  document.getElementById("task-form").reset(); //redefine os valores do formulário para os valores originais
   document.getElementById("editingTaskIndex").value = "";
 }

@@ -1,27 +1,41 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
 
         private String nome;
         private String descricao;
-        private LocalDate dataTermino;
+        private LocalDateTime dataTermino;
         private int nivelPrioridade; 
         private String categoria;
-        private Status status; 
+        private Status status;
+        private boolean alarmeAtivado;
+        private int antecedenciaHoras;
 
-        public Task(String nome, String descricao, LocalDate dataTermino,
-                    int nivelPrioridade, String categoria, Status status) {
+        public Task(String nome, String descricao, LocalDateTime dataTermino,
+                    int nivelPrioridade, String categoria, Status status, boolean alarmeAtivado, int antecedenciaHoras) {
             this.nome = nome;
             this.descricao = descricao;
             this.dataTermino = dataTermino;
             this.nivelPrioridade = nivelPrioridade;
             this.categoria = categoria;
             this.status = status;
+            this.alarmeAtivado = alarmeAtivado;
+            this.antecedenciaHoras = antecedenciaHoras;
         }
 
-        public String getNome() {
+    public boolean shouldTriggerAlarm(LocalDateTime currentTime) {
+        return alarmeAtivado && currentTime.isAfter(dataTermino.minusHours(antecedenciaHoras));
+    }
+
+    public boolean isAlarmeAtivado() { return alarmeAtivado; }
+    public int getAntecedenciaHoras() { return antecedenciaHoras; }
+
+
+    public String getNome() {
             return nome;
         }
 
@@ -37,11 +51,11 @@ public class Task {
             this.descricao = descricao;
         }
 
-        public LocalDate getDataTermino() {
+        public LocalDateTime getDataTermino() {
             return dataTermino;
         }
 
-        public void setDataTermino(LocalDate dataTermino) {
+        public void setDataTermino(LocalDateTime dataTermino) {
             this.dataTermino = dataTermino;
         }
 
@@ -71,12 +85,15 @@ public class Task {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
         return "Tarefa: " + nome + " | " +
                 "Descrição: " + descricao + " | " +
-                "Data de término: " + dataTermino + " | " +
-                "Prioridade: " + nivelPrioridade+ " | " +
+                "Data de término: " + dataTermino.format(formatter) + " | " +
+                "Prioridade: " + nivelPrioridade + " | " +
                 "Categoria: " + categoria + " | " +
-                "Status: " + status;
+                "Status: " + status +
+                (alarmeAtivado ? " | Alarme: Ativado para " + antecedenciaHoras + " hora(s) antes" : "");
     }
 
 

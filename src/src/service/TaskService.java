@@ -3,6 +3,7 @@ package service;
 import model.Status;
 import model.Task;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,10 +25,9 @@ public class TaskService {
         this.listaTarefas = listaTarefas;
     }
 
-    public void adicionarTarefa(String nome, String descricao, String data, int prioridade, String categoria, int statusInt) {
-        LocalDate dataTermino = LocalDate.parse(data);
+    public void adicionarTarefa(String nome, String descricao, LocalDateTime dataTermino, int prioridade, String categoria, int statusInt, boolean alarmeAtivado, int antecedenciaHoras) {
         Status status = converteIntParaStatus(statusInt);
-        Task nova = new Task(nome, descricao, dataTermino, prioridade, categoria, status);
+        Task nova = new Task(nome, descricao, dataTermino, prioridade, categoria, status, alarmeAtivado, antecedenciaHoras);
         listaTarefas.add(nova);
         reordenarPorPrioridade();
     }
@@ -90,7 +90,7 @@ public class TaskService {
         switch (opcao) {
             case 1: tarefa.setNome(novoValor); break;
             case 2: tarefa.setDescricao(novoValor); break;
-            case 3: tarefa.setDataTermino(LocalDate.parse(novoValor)); break;
+            case 3: tarefa.setDataTermino(LocalDateTime.parse(novoValor)); break;
             case 4: tarefa.setNivelPrioridade(Integer.parseInt(novoValor)); break;
             case 5: tarefa.setCategoria(novoValor); break;
             case 6: tarefa.setStatus(converteIntParaStatus(Integer.parseInt(novoValor))); break;
@@ -113,6 +113,14 @@ public class TaskService {
             case 2: return Status.DOING;
             case 3: return Status.DONE;
             default: return Status.TODO;
+        }
+    }
+    public void verificarAlarmes() {
+        LocalDateTime now = LocalDateTime.now();
+        for (Task task : listaTarefas) {
+            if (task.shouldTriggerAlarm(now)) {
+                System.out.println("🔔 Alarme: A tarefa '" + task.getNome() + "' está próxima do vencimento!");
+            }
         }
     }
 }
