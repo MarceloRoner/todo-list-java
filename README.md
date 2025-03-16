@@ -56,3 +56,19 @@ Marcelo Roner
  Adicionar suporte a banco de dados (PostgreSQL).
  Melhorar design do frontend.
  Criar autenticação de usuários.
+
+## ✅ Testes Unitários (JUnit 5)
+
+O projeto possui testes unitários implementados utilizando o **JUnit 5** para garantir a qualidade das operações de CRUD. Os testes cobrem os seguintes cenários:
+
+- ✅ Criação de Tarefa
+- ✅ Atualização de Tarefa (incluindo status)
+- ✅ Deleção de Tarefa
+- ✅ Busca de Tarefa por Índice
+- ✅ Listagem de Tarefas (por categoria, prioridade e status)
+- ✅ Verificação de Alarmes
+
+### 🔄 Como Executar os Testes
+
+- Se estiver utilizando o IntelliJ IDEA, basta clicar no ícone de execução da classe de teste `TaskServiceTest`.  
+- Ou execute via terminal (se configurado com Maven ou Gradle).
