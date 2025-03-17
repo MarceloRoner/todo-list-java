@@ -1,8 +1,18 @@
 let tasks = [];
 
+function loadTasks() {
+  const storedTasks = localStorage.getItem("tasks");
+  tasks = storedTasks ? JSON.parse(storedTasks) : [];
+}
+
+function saveTasksToLocalStorage() {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("task-form");
   const filterBtn = document.getElementById("filterBtn");
+  const updateMultipleStatusBtn = document.getElementById("updateMultipleStatusBtn");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -14,25 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTaskTable(status);
   });
 
-  tasks = [
-    {
-      nome: "Estudar HTML/CSS",
-      descricao: "Revisar tags básicas",
-      dataTermino: "2025-02-20",
-      nivelPrioridade: 2,
-      categoria: "Estudos",
-      status: "TODO"
-    },
-    {
-      nome: "Implementar Frontend",
-      descricao: "Criar layout em JS",
-      dataTermino: "2025-02-22",
-      nivelPrioridade: 1,
-      categoria: "Projeto",
-      status: "DOING"
-    }
-  ];
+  updateMultipleStatusBtn.addEventListener("click", updateMultipleStatus);
 
+  loadTasks();
   renderTaskTable();
 });
 
@@ -51,7 +45,7 @@ function saveTask() {
     dataTermino: dateInput.value,
     nivelPrioridade: parseInt(priorityInput.value),
     categoria: categoryInput.value,
-    status: statusSelect.value
+    status: statusSelect.value,
   };
 
   if (editingIndex === "") {
@@ -60,6 +54,7 @@ function saveTask() {
     tasks[editingIndex] = newTask;
   }
 
+  saveTasksToLocalStorage();
   formReset();
   renderTaskTable();
 }
@@ -68,11 +63,13 @@ function renderTaskTable(filterStatus = "") {
   const tbody = document.querySelector("#task-table tbody");
   tbody.innerHTML = "";
   const filtered = filterStatus
-    ? tasks.filter((t) => t.status === filterStatus)
-    : tasks;
+      ? tasks.filter((t) => t.status === filterStatus)
+      : tasks;
+
   filtered.forEach((task, index) => {
     const row = document.createElement("tr");
     row.innerHTML = `
+      <td><input type="checkbox" class="task-checkbox" data-index="${index}"></td>
       <td>${task.nome}</td>
       <td>${task.descricao}</td>
       <td>${task.dataTermino}</td>
@@ -86,6 +83,26 @@ function renderTaskTable(filterStatus = "") {
     `;
     tbody.appendChild(row);
   });
+}
+
+function updateMultipleStatus() {
+  const selectedStatus = prompt("Digite o novo status para as tarefas selecionadas (TODO, DOING, DONE):");
+
+  if (!selectedStatus || !["TODO", "DOING", "DONE"].includes(selectedStatus.toUpperCase())) {
+    alert("Status inválido. Use: TODO, DOING ou DONE.");
+    return;
+  }
+
+  const checkboxes = document.querySelectorAll(".task-checkbox:checked");
+
+  checkboxes.forEach((checkbox) => {
+    const index = checkbox.getAttribute("data-index");
+    tasks[index].status = selectedStatus.toUpperCase();
+  });
+
+  saveTasksToLocalStorage();
+  renderTaskTable();
+  alert("Status atualizado para as tarefas selecionadas!");
 }
 
 function editTask(index) {
@@ -102,11 +119,12 @@ function editTask(index) {
 function deleteTask(index) {
   if (confirm("Tem certeza que deseja excluir esta tarefa?")) {
     tasks.splice(index, 1);
+    saveTasksToLocalStorage();
     renderTaskTable();
   }
 }
 
 function formReset() {
-  document.getElementById("task-form").reset(); //redefine os valores do formulário para os valores originais
+  document.getElementById("task-form").reset();
   document.getElementById("editingTaskIndex").value = "";
 }
