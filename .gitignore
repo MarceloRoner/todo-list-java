@@ -1,6 +1,16 @@
+# Compilados Java
 *.class
+
+# Arquivos da IDE
 *.iml
 .idea/
 out/
-build/
+
+# Diretórios do Gradle
+/build
+.gradle/
+
+
+.DS_Store
+Thumbs.db
 
