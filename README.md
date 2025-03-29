@@ -27,7 +27,11 @@ Este repositório contém um projeto de **TODO List** desenvolvido em **Java** p
 
 ## 🔧 Como Executar
 
-### **1️⃣ Rodando o Backend (Java)**
+### **1️⃣ Rodando o Backend (Java via Gradle)**
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/SEU_USUARIO/todo-list-java.git
+
 1. **Clone o repositório:**
 ```bash
 git clone https://github.com/SEU_USUARIO/todo-list-java.git
@@ -74,7 +78,11 @@ cd Frontend
 - 📱 Melhorar a responsividade para dispositivos móveis.
 
 ---
+## 🛠️ Atualização Importante
 
+🎯 O projeto backend agora utiliza **Gradle como build tool**, seguindo as boas práticas modernas de desenvolvimento Java.
+
+Essa refatoração garante mais facilidade para rodar, testar e manter o projeto!
 ## ✅ Novas Features
 - 🚀 **Persistência Local:** Agora, as tarefas do frontend são automaticamente salvas e carregadas do `localStorage`.
 - 🔄 **Atualização em Massa:** O usuário pode selecionar múltiplas tarefas e atualizar o status delas de uma única vez.
